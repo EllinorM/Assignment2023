@@ -8,14 +8,16 @@ public class MainMorse {
         Logic logic = new Logic();
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Write something you will translate in morse or english");
+        String welcomeText = "Write something you will translate in morse or english";
+
+        System.out.println(welcomeText);
         String input = scan.nextLine();
 
         while (input != null && !input.trim().isEmpty()) {
             String translation = logic.Translate(input);
             System.out.println(translation);
 
-            System.out.println("Write something you will translate in morse or english");
+            System.out.println(welcomeText);
             input = scan.nextLine();
         }
     }

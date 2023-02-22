@@ -1,4 +1,5 @@
 package Assignment2023;
+
 import java.util.HashMap;
 
 public class Logic {
@@ -13,7 +14,7 @@ public class Logic {
         input = input.toLowerCase();
         String[] splittedList;
 
-        if (input.startsWith("*") || input.startsWith("-")) {
+        if (IsMorse(input)) {
             splittedList = input.split(" ");
         } else {
             splittedList = input.split("");
@@ -29,21 +30,24 @@ public class Logic {
         return translation.trim();
     }
 
-
     public String ConvertMorse(String translateInput) {
 
         String translatedValue = _morseHashMap.get(translateInput).toString();
-        if (translateInput.startsWith("*") || translateInput.startsWith("-")) {
+        if (IsMorse(translateInput)) {
             return translatedValue;
         } else {
             return translatedValue + " ";
         }
     }
 
-    public HashMap GenerateHashMap() {
+    private Boolean IsMorse(String input) {
+        return input.startsWith("*") || input.startsWith("-");
+    }
+
+    private HashMap GenerateHashMap() {
 
         HashMap<String, String> morseCode = new HashMap<>();
-        morseCode.put(" ", " ");
+        morseCode.put(" ", "|");
         morseCode.put("a", "*-");
         morseCode.put("b", "-***");
         morseCode.put("c", "-*-*");
@@ -81,6 +85,7 @@ public class Logic {
         morseCode.put("9", "----*");
         morseCode.put("0", "-----");
 
+        morseCode.put("|", " ");
         morseCode.put("*-", "a");
         morseCode.put("-***", "b");
         morseCode.put("-*-*", "c");
